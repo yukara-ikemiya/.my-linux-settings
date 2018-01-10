@@ -16,27 +16,31 @@ CXXFLAGS := -Wall -Wextra -O3 -mavx -fopenmp -pipe
 LIBS := -lfftw3 -lsndfile
 EXT_INCLUDES := -I/home/yukara/Tools/Eigen_3.3.2/
 
-# directory
+# source directories
 ROOT_DIR := .
-OUT_DIR := build
 SOURCE_DIR := $(ROOT_DIR)
 HEADER_DIR := $(ROOT_DIR)
 
+# get all source files
 SOURCES := $(shell find . -name "*.cpp" -or -name "*.c")
 HEADERS := $(shell find . -name "*.hpp" -or -name "*.h")
 
-# exclude the .git directory
+# get all sub-directories (except a .git directory)
 INCLUDES := $(addprefix -I,$(shell find $(ROOT_DIR) -path $(ROOT_DIR)/.git -prune -o -type d -print)) $(EXT_INCLUDES)
 
+# output directories
+OUT_DIR := build
 PROGRAM_DIR := $(OUT_DIR)/bin
 OBJ_DIR := $(OUT_DIR)/obj
 DEPEND_DIR := $(OUT_DIR)/depend
 
+# output files
 PROGRAM := $(PROGRAM_DIR)/$(PROGRAM_NAME)
 SOURCE_NAMES = $(SOURCES) # $(notdir $(SOURCES))
 OBJS := $(addprefix $(OBJ_DIR)/,$(SOURCE_NAMES:.cpp=.o))
 DEPENDS := $(addprefix $(DEPEND_DIR)/,$(SOURCE_NAMES:.cpp=.depend))
 
+# rules
 .PHONY: all
 all: $(DEPENDS) $(PROGRAM)
 $(PROGRAM): $(OBJS)
