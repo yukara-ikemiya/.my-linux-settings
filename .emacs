@@ -16,7 +16,7 @@
 
 (setq-default c-basic-offset 1  ;;基本インデント量
               tab-width 4     ;;タブ幅4
-			  indent-tabs-mode t
+	      indent-tabs-mode t
               )  ;;インデントをタブでするかスペースでするか
 
 
@@ -25,11 +25,11 @@
 
 ;; set window status
 (if window-system (progn
-					(setq initial-frame-alist '((width . 130)(height . 50)(top . 0)(left . 0)))
-					(set-background-color "Black")
-					(set-foreground-color "White")
-					(set-cursor-color "Gray")
-					))
+		    (setq initial-frame-alist '((width . 130)(height . 50)(top . 0)(left . 0)))
+		    (set-background-color "Black")
+		    (set-foreground-color "White")
+		    (set-cursor-color "Gray")
+		    ))
 
 
 ;; 全角空白を表示させる。
@@ -37,11 +37,11 @@
 
 ;; バックアップファイル保存先
 (setq backup-directory-alist
-	  (cons (cons ".*" (expand-file-name "~/.emacs.d/backup"))
-			backup-directory-alist))
+      (cons (cons ".*" (expand-file-name "~/.emacs.d/backup"))
+	    backup-directory-alist))
 
 (setq auto-save-file-name-transforms
-	  `((".*", (expand-file-name "~/.emacs.d/backup/") t)))
+      `((".*", (expand-file-name "~/.emacs.d/backup/") t)))
 
 
 ;; matlab-mode 用
@@ -56,24 +56,24 @@
 (add-hook 'c++-mode-hook
           '(lambda ()
              (c-set-style "bsd") ; k&r、bsd、stroustrup、whitesmith、ellemtel、linuxなどがある。
-			 (setq c-basic-offset 4)
-			 (c-set-offset 'statement-cont 'c-lineup-math)
-			 (c-set-offset 'arglist-close 0)
-			 (c-set-offset 'arglist-cont 0)
-			 (c-set-offset 'case-label 4)
-			 (c-set-offset 'statement-case-intro 4)
-			 (c-set-offset 'comment-intro 0)
-			 (c-set-offset 'innamespace 0)
+	     (setq c-basic-offset 4)
+	     (c-set-offset 'statement-cont 'c-lineup-math)
+	     (c-set-offset 'arglist-close 0)
+	     (c-set-offset 'arglist-cont 0)
+	     (c-set-offset 'case-label 4)
+	     (c-set-offset 'statement-case-intro 4)
+	     (c-set-offset 'comment-intro 0)
+	     (c-set-offset 'innamespace 0)
              )
-		  )
+	  )
 
 
 ;; Python settings
 (add-hook 'python-mode-hook
-		  (lambda ()
-			(setq-default indent-tabs-mode t)
-			(setq-default tab-width 4)
-			(setq-default py-indent-tabs-mode t)
-			(add-to-list 'write-file-functions 'delete-trailing-whitespace)
-			)
-		  )
+	  (lambda ()
+	    (setq-default indent-tabs-mode t)
+	    (setq-default tab-width 4)
+	    (setq-default py-indent-tabs-mode t)
+	    (add-to-list 'write-file-functions 'delete-trailing-whitespace)
+	    )
+	  )
